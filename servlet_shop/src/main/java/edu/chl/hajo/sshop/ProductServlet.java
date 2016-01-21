@@ -59,7 +59,7 @@ public class ProductServlet extends HttpServlet {
                             currPage = Integer.parseInt(parts[1]);
                         } catch (NumberFormatException e) {
                             e.printStackTrace();
-                            break;
+                            //break;
                         }
                     }
                     // TODO
@@ -86,6 +86,9 @@ public class ProductServlet extends HttpServlet {
                     }else{
                         break;
                     }
+                    break;
+                case "new":
+                    partial = partial + "addProduct";
                     break;
                 case "del":
                     break;
