@@ -67,15 +67,17 @@ public class ProductServlet extends HttpServlet {
                     session.setAttribute(Keys.CURRENT_PAGE.toString(), currPage);
                     int pageSize = (int) session.getAttribute(Keys.PAGE_SIZE.toString());
                     List<Product> ps = shop.getProductCatalogue().findRange(currPage * pageSize, pageSize);
+                    int totNrOfProducts = shop.getProductCatalogue().count();
                     req.setAttribute(Keys.PRODUCT_LIST.toString(),ps);
-                    req.setAttribute(Keys.COUNT.toString(),shop.getProductCatalogue().count());
+                    req.setAttribute(Keys.COUNT.toString(),totNrOfProducts);
                     partial = partial + "listProducts";
                     break;
                 case "edit":
                     if(parts.length>1){
                         try {
-                            int productId = Integer.parseInt(parts[1]);
-                            req.setAttribute("PRODUCT_ID",productId);
+                            long productId = Long.parseLong(parts[1]);
+                            Product product = shop.getProductCatalogue().find(productId);
+                            req.setAttribute("product",product);
                             partial = partial + "editProduct";
                         } catch (NumberFormatException e) {
                             e.printStackTrace();
