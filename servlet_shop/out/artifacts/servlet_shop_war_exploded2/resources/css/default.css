@@ -1,0 +1,28 @@
+/*
+*  Simple CSS for the background picture
+*/
+
+header {
+    background-image:  url(../../resources/img/banner.jpg);
+    background-repeat: repeat;
+    background-position: center;
+    border-radius:25px;
+    box-shadow: 8px 8px 5px gainsboro
+}
+
+header h1{  
+    padding-top: 0.5em;
+    font-size: 60px;
+    font-family: fantasy;
+    font-style: italic;
+    font-weight: 900;
+    font-variant: small-caps;
+    color: white;
+    text-align: left;
+    margin-left: 0.5em;
+    vertical-align: middle;
+}
+
+.partial-form {
+     max-width: 20pc;
+}
