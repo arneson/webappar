@@ -1,13 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <section id="pageSection" class="partial-form">
 
-    <form action="${pageContext.request.contextPath}/products/list/${CURRENT_PAGE}" method="post" role="form" id="input">
+    <form action="${pageContext.request.contextPath}/products/edit" method="post" role="form" id="input">
         <fieldset>
             <legend>Product</legend>
-            <input type="hidden" name="action" value="create" />
             <div class="form-group">
                 <label for="id" >Id</label>
-                <input type="text" name="id" value="${product.id}" disabled class="form-control"/>
+                <input type="text" name="id" value="${product.id}" readonly class="form-control"/>
             </div>
             <div class="form-group">
                 <label for="name">Name (string)</label>
