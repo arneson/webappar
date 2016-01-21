@@ -87,7 +87,7 @@ public class ProductServlet extends HttpServlet {
                         break;
                     }
                     break;
-                case "new":
+                case "add":
                     partial = partial + "addProduct";
                     break;
                 case "del":

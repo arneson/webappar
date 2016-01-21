@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="50f6f384-cbba-4e1d-9620-667e612eef06" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/chl/hajo/sshop/ProductServlet.java" afterPath="$PROJECT_DIR$/src/main/java/edu/chl/hajo/sshop/ProductServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/app/products/editProduct.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/app/products/editProduct.jsp" />
     </list>
     <ignored path="servlet_shop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,8 +38,8 @@
       <file leaf-file-name="ProductServlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/chl/hajo/sshop/ProductServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.84099615">
-              <caret line="90" column="53" selection-start-line="90" selection-start-column="53" selection-end-line="90" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.8122605">
+              <caret line="89" column="25" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1041,12 +1040,12 @@
       <created>1453379022520</created>
       <option name="number" value="Default" />
       <updated>1453379022520</updated>
-      <workItem from="1453379023697" duration="7191000" />
+      <workItem from="1453379023697" duration="7267000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7191000" />
+    <option name="totallyTimeSpent" value="7267000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="202" y="62" width="1112" height="833" extended-state="0" />
@@ -1227,8 +1226,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/chl/hajo/sshop/ProductServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84099615">
-          <caret line="90" column="53" selection-start-line="90" selection-start-column="53" selection-end-line="90" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.8122605">
+          <caret line="89" column="25" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
