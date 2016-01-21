@@ -9,7 +9,7 @@
     <div class="btn-group-sm">
         <c:choose>
             <c:when test="${CURRENT_PAGE gt 0}">
-                <a href="${pageContext.request.contextPath}/products/list/${CURRENT_PAGE-1}" class="btn">Prev</a> 
+                <a href="${pageContext.request.contextPath}/products/list/${CURRENT_PAGE-1}" class="btn">Prev</a>
             </c:when>
             <c:otherwise>
                 <a href="" disabled class="btn">Prev</a> 
@@ -33,7 +33,15 @@
             </tr>
         </thead>
         <tbody>
-            <!--  TODO create the list form some data -->
+            <c:forEach var="product" items="${PRODUCT_LIST}">
+                <tr>
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td><a href="${pageContext.request.contextPath}/products/edit/${product.id}" class="btn">Edit</a></td>
+                    <td><a href="${pageContext.request.contextPath}/products/del/${product.id}" class="btn">Delete</a></td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </section>
