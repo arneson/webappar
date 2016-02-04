@@ -4,8 +4,9 @@
  *  The Shop App
  */
 var shop = angular.module('Shop', [
-    'ngRoute'
-            // More here
+    'ngRoute',
+    'ProductCatalogueControllers',
+    'ProductCatalogueService'
 ]);
 
 
@@ -14,7 +15,7 @@ shop.config(['$routeProvider',
         $routeProvider.
                 when('/products', {
                     templateUrl: 'partials/products/products.html',
-                    controller: 'PersonListCtrl'
+                    controller: 'ProductListCtrl'
                 }).
                 when('/products/:id', {
                     templateUrl: 'partials/products/product-detail.html',
@@ -27,8 +28,6 @@ shop.config(['$routeProvider',
                 otherwise({
                     redirectTo: '/products'
                 });
-                
-                // TODO Add more navigation
                 
 
     }]);

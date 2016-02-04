@@ -27,7 +27,7 @@ productCatalogueService.factory('ProductCatalogueProxy', ['$http',
                 return $http.put(url + "/" + id, product);
             },
             findRange: function(first, count){
-                return $http.get(url + "/range?fst=" + first + "&count=" + count);
+                return $http.get(url + "/range?fst=" + first + "&max=" + count);
             },
             count: function(){
                 return $http.get(url + "/count");

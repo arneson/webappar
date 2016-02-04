@@ -6,12 +6,12 @@
 
 var productCatalogueControllers = angular.module('ProductCatalogueControllers', []);
 
-productCatalogueControllers.controller('ProductListCtrl', ['$scope', 'ProductRegProxy',
-    function($scope, ProductsRegProxy) {
+productCatalogueControllers.controller('ProductListCtrl', ['$scope', 'ProductCatalogueProxy',
+    function($scope, ProductsCatalogueProxy) {
         $scope.orderProp = 'id';
         $scope.pageSize = '10';
         $scope.currentPage = 0;
-        ProductsRegProxy.count()
+        ProductsCatalogueProxy.count()
             .success(function(count) {
                 $scope.count = count.value;
             }).error(function() {
@@ -23,7 +23,7 @@ productCatalogueControllers.controller('ProductListCtrl', ['$scope', 'ProductReg
         });
         function getRange() {
             var fst = $scope.pageSize * $scope.currentPage;
-            ProductsRegProxy.findRange(fst, $scope.pageSize)
+            ProductsCatalogueProxy.findRange(fst, $scope.pageSize)
                 .success(function(Products) {
                     $scope.products = Products;
                 }).error(function() {
@@ -33,9 +33,9 @@ productCatalogueControllers.controller('ProductListCtrl', ['$scope', 'ProductReg
     }]);
 
 productCatalogueControllers.controller('ProductDetailCtrl', ['$scope',
-    '$location', '$routeParams', 'ProductRegProxy',
-    function($scope, $location, $routeParams, ProductRegProxy) {
-        ProductRegProxy.find($routeParams.id)
+    '$location', '$routeParams', 'ProductsCatalogueProxy',
+    function($scope, $location, $routeParams, ProductsCatalogueProxy) {
+        ProductsCatalogueProxy.find($routeParams.id)
             .success(function(product) {
                 $scope.product = product;
             }).error(function() {
@@ -43,7 +43,7 @@ productCatalogueControllers.controller('ProductDetailCtrl', ['$scope',
         });
 
         $scope.update = function() {
-            ProductRegProxy.update($routeParams.id, $scope.product)
+            ProductsCatalogueProxy.update($routeParams.id, $scope.product)
                 .success(function() {
                     $location.path('/products');
                 }).error(function() {
@@ -52,7 +52,7 @@ productCatalogueControllers.controller('ProductDetailCtrl', ['$scope',
         };
         // A listener
         $scope.delete = function() {
-            ProductRegProxy.delete($routeParams.id)
+            ProductsCatalogueProxy.delete($routeParams.id)
                 .success(function() {
                     $location.path('/products');
                 }).error(function() {
@@ -63,10 +63,10 @@ productCatalogueControllers.controller('ProductDetailCtrl', ['$scope',
 
 
 productCatalogueControllers.controller('ProductNewCtrl', ['$scope',
-    '$location', 'ProductRegProxy',
-    function($scope, $location, ProductRegProxy) {
+    '$location', 'ProductsCatalogueProxy',
+    function($scope, $location, ProductsCatalogueProxy) {
         $scope.save = function() {
-            ProductRegProxy.create($scope.product)
+            ProductsCatalogueProxy.create($scope.product)
                 .success(function() {
                     $location.path('/products');
                 }).error(function() {
