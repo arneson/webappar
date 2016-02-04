@@ -54,8 +54,18 @@ public class ProductCatalogueResource {
             return Response.noContent().build();  // 204
         }
     }
-    
-    // TODO all the other methods ...
 
+    //TODO Methods to be implemented
+    //public void create(T t);
+
+    //public void delete(K id);
+
+   //public void update(T t);
+
+    //public List<T> findAll();
+
+    //public List<T> findRange(int first, int n );
+
+    //public int count();
    
 }

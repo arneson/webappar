@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+     RESTful Web shop
+
+       NOTHING TO DO HERE
+
+-->
+<html lang="en" ng-app="Shop">
+    <head>
+        <title>Shop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../../resources/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../../resources/bower_components/angular/angular.min.js"></script>
+        <script src="../../resources/bower_components/angular-route/angular-route.min.js"></script>
+        <script src="js/app.js"></script>   
+        <script src="js/controllers.js"></script>  
+        <script src="js/services.js"></script>  
+        <script src="js/filters.js"></script>  
+        <link rel="stylesheet" type="text/css" href="../../resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/default.css">
+        <link rel="icon" type="image/png" href="../../resources/img/favicon.png">
+    </head>
+    <body class="container">
+        <header>
+            <hgroup>
+                <h1>Fruitology</h1>
+                <h2>We taste better</h2>
+            </hgroup>
+        </header>
+        <nav class="navbar navbar-default" role="navigation">
+            <a class="navbar-brand" href="#">Home</a>
+            <a class="navbar-brand" href="#/products">Products</a>
+            <a class="navbar-brand" href="#/customers">Customers</a>
+            <a class="navbar-brand" href="#/orders">Orders</a>
+        </nav>
+        <h2>Front end not working</h2>
+        <p>Use Test Packages/.../curl_test.txt to test back end</p>
+        <div class="view-container">
+            <!-- Include the view template for the current route -->
+            <div ng-view ></div>
+        </div>
+    </body>
+</html>
