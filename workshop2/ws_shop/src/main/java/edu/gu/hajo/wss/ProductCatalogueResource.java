@@ -55,12 +55,51 @@ public class ProductCatalogueResource {
         }
     }
 
+    @DELETE
+    @Path("{id: \\d+}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response delete(@PathParam("id") Long id,
+                         @Context Request request) {
+        //to be able to check if exists
+        Product p = shop.getProductCatalogue().find(id);
+        if (p != null) {
+            shop.getProductCatalogue().delete(id);
+            return Response.ok(new ProductWrapper(p)).build(); // 200
+        } else {
+            return Response.noContent().build();  // 204
+        }
+    }
+
     //TODO Methods to be implemented
-    //public void create(T t);
+    @POST
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response create(@FormParam("price") double price,
+                           @FormParam("name") String name,
+                         @Context Request request) {
+        Product p = new Product(name,price);
+        shop.getProductCatalogue().create(p);
+        if (p != null) {
+            return Response.ok(new ProductWrapper(p)).build(); // 200
+        } else {
+            return Response.noContent().build();  // 204
+        }
+    }
 
-    //public void delete(K id);
-
-   //public void update(T t);
+   @PUT
+   @Path("{id: \\d+}")
+   @Produces({MediaType.APPLICATION_JSON})
+   public Response update(@PathParam("id") Long id,
+                          @FormParam("price") double price,
+                          @FormParam("name") String name,
+                          @Context Request request) {
+       Product p = new Product(id,name,price);
+       shop.getProductCatalogue().update(p);
+       if (p != null) {
+           return Response.ok(new ProductWrapper(p)).build(); // 200
+       } else {
+           return Response.noContent().build();  // 204
+       }
+   }
 
     //public List<T> findAll();
 
