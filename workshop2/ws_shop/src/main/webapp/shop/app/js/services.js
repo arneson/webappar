@@ -13,7 +13,7 @@ productCatalogueService.factory('ProductCatalogueProxy', ['$http',
   
         return {
             
-            // TODO Add methods to call backend resource class (using AJAX) 
+            // TODO Add methods to call backend resource class (using AJAX)
           
         };
     }]);
