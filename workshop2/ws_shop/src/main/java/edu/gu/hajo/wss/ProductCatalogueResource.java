@@ -5,6 +5,7 @@ import edu.chl.hajo.shop.core.IShop;
 import edu.chl.hajo.shop.core.Product;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -42,6 +43,7 @@ public class ProductCatalogueResource {
     private UriInfo uriInfo;
     private final IShop shop = SingletonShop.INSTANCE.getShop();
 
+    //find
     @GET
     @Path("{id: \\d+}")
     @Produces({MediaType.APPLICATION_JSON})
@@ -54,7 +56,22 @@ public class ProductCatalogueResource {
             return Response.noContent().build();  // 204
         }
     }
-
+    //findAll
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response findAll(@Context Request request) {
+        ArrayList<ProductWrapper> productWrappers = new ArrayList<ProductWrapper>();
+        for (Product p:shop.getProductCatalogue().findAll()) {
+            productWrappers.add(new ProductWrapper(p));
+        }
+        GenericEntity<Collection<ProductWrapper>> ge = new GenericEntity<Collection<ProductWrapper>>(productWrappers){};
+        if (productWrappers.size()>-1) {
+            return Response.ok(ge).build(); // 200
+        } else {
+            return Response.noContent().build();  // 204
+        }
+    }
+    //delete
     @DELETE
     @Path("{id: \\d+}")
     @Produces({MediaType.APPLICATION_JSON})
@@ -70,7 +87,7 @@ public class ProductCatalogueResource {
         }
     }
 
-    //TODO Methods to be implemented
+    //create
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     public Response create(@FormParam("price") double price,
@@ -85,6 +102,7 @@ public class ProductCatalogueResource {
         }
     }
 
+    //update
    @PUT
    @Path("{id: \\d+}")
    @Produces({MediaType.APPLICATION_JSON})
@@ -92,7 +110,7 @@ public class ProductCatalogueResource {
                           @FormParam("price") double price,
                           @FormParam("name") String name,
                           @Context Request request) {
-       Product p = new Product(id,name,price);
+       Product p = new Product(id, name, price);
        shop.getProductCatalogue().update(p);
        if (p != null) {
            return Response.ok(new ProductWrapper(p)).build(); // 200
@@ -101,10 +119,33 @@ public class ProductCatalogueResource {
        }
    }
 
-    //public List<T> findAll();
+    //findRange
+    @GET
+    @Path("range")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response findRange(@QueryParam("fst") int first,
+                              @QueryParam("max") int max,
+                              @Context Request request) {
+        ArrayList<ProductWrapper> productWrappers = new ArrayList<ProductWrapper>();
+        for (Product p:shop.getProductCatalogue().findRange(first,max)) {
+            productWrappers.add(new ProductWrapper(p));
+        }
+        GenericEntity<Collection<ProductWrapper>> ge = new GenericEntity<Collection<ProductWrapper>>(productWrappers){};
+        if (productWrappers.size()>-1) {
+            return Response.ok(ge).build(); // 200
+        } else {
+            return Response.noContent().build();  // 204
+        }
+    }
 
-    //public List<T> findRange(int first, int n );
-
-    //public int count();
+    //count
+    @GET
+    @Path("count")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response count(@Context Request request) {
+        int count = shop.getProductCatalogue().count();
+        JsonObject value = Json.createObjectBuilder().add("value", count).build();
+        return Response.ok(value).build(); // 200
+    }
    
 }
