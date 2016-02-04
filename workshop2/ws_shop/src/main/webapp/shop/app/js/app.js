@@ -15,7 +15,18 @@ shop.config(['$routeProvider',
                 when('/products', {
                     templateUrl: 'partials/products/products.html',
                     controller: 'PersonListCtrl'
-                }); 
+                }).
+                when('/products/:id', {
+                    templateUrl: 'partials/products/product-detail.html',
+                    controller: 'ProductDetailCtrl'
+                }).
+                when('/product', {
+                    templateUrl: 'partials/products/product-new.html',
+                    controller: 'ProductNewCtrl'
+                }).
+                otherwise({
+                    redirectTo: '/products'
+                });
                 
                 // TODO Add more navigation
                 
