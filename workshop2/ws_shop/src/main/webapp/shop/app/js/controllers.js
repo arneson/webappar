@@ -33,9 +33,9 @@ productCatalogueControllers.controller('ProductListCtrl', ['$scope', 'ProductCat
     }]);
 
 productCatalogueControllers.controller('ProductDetailCtrl', ['$scope',
-    '$location', '$routeParams', 'ProductsCatalogueProxy',
-    function($scope, $location, $routeParams, ProductsCatalogueProxy) {
-        ProductsCatalogueProxy.find($routeParams.id)
+    '$location', '$routeParams', 'ProductCatalogueProxy',
+    function($scope, $location, $routeParams, ProductCatalogueProxy) {
+        ProductCatalogueProxy.find($routeParams.id)
             .success(function(product) {
                 $scope.product = product;
             }).error(function() {
@@ -43,34 +43,34 @@ productCatalogueControllers.controller('ProductDetailCtrl', ['$scope',
         });
 
         $scope.update = function() {
-            ProductsCatalogueProxy.update($routeParams.id, $scope.product)
+            ProductCatalogueProxy.update($routeParams.id, $scope.product)
                 .success(function() {
                     $location.path('/products');
                 }).error(function() {
-                ; // TODO;
+                console.log('update failed');
             });
         };
         // A listener
         $scope.delete = function() {
-            ProductsCatalogueProxy.delete($routeParams.id)
+            ProductCatalogueProxy.delete($routeParams.id)
                 .success(function() {
                     $location.path('/products');
                 }).error(function() {
-                ; // TODO;
+                console.log('deletion failed');
             });
         };
     }]);
 
 
 productCatalogueControllers.controller('ProductNewCtrl', ['$scope',
-    '$location', 'ProductsCatalogueProxy',
-    function($scope, $location, ProductsCatalogueProxy) {
+    '$location', 'ProductCatalogueProxy',
+    function($scope, $location, ProductCatalogueProxy) {
         $scope.save = function() {
-            ProductsCatalogueProxy.create($scope.product)
+            ProductCatalogueProxy.create($scope.product)
                 .success(function() {
                     $location.path('/products');
                 }).error(function() {
-                ; // TODO;
+                console.log('save failed');
             });
         };
     }]);
@@ -83,6 +83,3 @@ productCatalogueControllers.controller('NavigationCtrl', ['$scope', '$location',
             $location.path(url);
         };
     }]);
-
-
-    // TODO more controllers if needed

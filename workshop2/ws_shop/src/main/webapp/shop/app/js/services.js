@@ -8,7 +8,7 @@ var productCatalogueService = angular.module('ProductCatalogueService', []);
 productCatalogueService.factory('ProductCatalogueProxy', ['$http',
     function($http) {
 
-        var url = 'http://localhost:8080/ws_shop_war_exploded/webresources/products';
+        var url = 'http://localhost:8080/ws_shop-1.0-SNAPSHOT/webresources/products';
 
         return {
             find: function (id){
