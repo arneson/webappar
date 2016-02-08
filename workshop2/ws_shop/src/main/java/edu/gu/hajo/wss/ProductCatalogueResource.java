@@ -90,9 +90,11 @@ public class ProductCatalogueResource {
     //create
     @POST
     @Produces({MediaType.APPLICATION_JSON})
-    public Response create(@FormParam("price") double price,
-                           @FormParam("name") String name,
+    @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+    public Response create(JsonObject obj,
                          @Context Request request) {
+        String name = obj.getString("name");
+        Double price = obj.getJsonNumber("price").doubleValue();
         Product p = new Product(name,price);
         shop.getProductCatalogue().create(p);
         if (p != null) {
@@ -106,10 +108,11 @@ public class ProductCatalogueResource {
    @PUT
    @Path("{id: \\d+}")
    @Produces({MediaType.APPLICATION_JSON})
+   @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
    public Response update(@PathParam("id") Long id,
-                          @FormParam("price") double price,
-                          @FormParam("name") String name,
-                          @Context Request request) {
+                          JsonObject obj,@Context Request request) {
+       String name = obj.getString("name");
+       Double price = obj.getJsonNumber("price").doubleValue();
        Product p = new Product(id, name, price);
        shop.getProductCatalogue().update(p);
        if (p != null) {
