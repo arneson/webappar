@@ -12,9 +12,11 @@ shop/.idea
 servlet_shop/.idea
 /workshop2/ws_shop/.idea
 /workshop3/jsf_shop/.idea
+/workshop4/jpa_shop/.idea
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /shop/target/
 /servlet_shop/target/
 /workshop2/ws_shop/target/
+/workshop4/jpa_shop/target/
